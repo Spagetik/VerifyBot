@@ -4,7 +4,7 @@ from discord import Intents
 from discord.ext import commands, tasks
 from discord_slash import SlashCommand, SlashContext
 from discord_slash.utils.manage_commands import create_option
-import config
+from src import config
 import pymysql
 
 bot = commands.Bot(command_prefix=config.command_prefix, intents=Intents.all())
