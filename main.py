@@ -204,4 +204,5 @@ async def verify(ctx: SlashContext, code: int):
         await ctx.send(config.error_message, hidden=True)
 
 
-bot.run(config.bot_token)
+if __name__ == '__main__':
+    bot.run(config.bot_token)
