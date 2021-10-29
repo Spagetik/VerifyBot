@@ -3,10 +3,14 @@ command_prefix = ">>"  # Your bot command prefix
 guild_id = 0  # Guild id where bot will verify users
 common_role_id = 0  # Role id which will be added to verified users
 error_message = "This code doesn't exist! Use **`/verify`** on server to get new one!"  # Message for user when verify error occurred
+error_message_embed = None
 success_message = "You successfully verified!"  # Message for user when user successfully verified
+success_message_embed = None
 ban_message = "You was banned!"  # Message for banned users, when they try to verify from new Discord account
+ban_message_embed = None
 move_message = "{old}, you verified from new account - {new}." \
                "\n\n**If you don't move your account, text server administrator!**"  # Migration message when user migrate to new Discord account
+move_message_embed = None
 
 database_host = 'localhost'  # Database host
 database_port = 3306  # Database host port

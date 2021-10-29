@@ -176,14 +176,20 @@ async def verify(ctx: SlashContext, code: int):
             nick = get_current_nickname(uuid)
             add_new_member_to_db(ctx.author, uuid, nick)
             await give_role_and_nick(ctx.author, nick)
-            await ctx.send(config.success_message, hidden=True)
+            await ctx.send(content=config.success_message if config.success_message is not None else "",
+                           embed=config.success_message_embed,
+                           hidden=True)
         elif member_exist["discord_id"] == ctx.author.id:
             if not member_exist["banned"]:
                 nick = get_current_nickname(uuid)
                 await give_role_and_nick(ctx.author, nick)
-                await ctx.send(config.success_message, hidden=True)
+                await ctx.send(content=config.success_message if config.success_message is not None else "",
+                               embed=config.success_message_embed,
+                               hidden=True)
             else:
-                await ctx.send(config.ban_message, hidden=True)
+                await ctx.send(content=config.ban_message if config.ban_message is not None else "",
+                               embed=config.ban_message_embed,
+                               hidden=True)
         elif member_exist["discord_id"] != ctx.author.id:
             if not member_exist["banned"]:
                 guild = bot.get_guild(config.guild_id)
@@ -197,11 +203,17 @@ async def verify(ctx: SlashContext, code: int):
                 nick = get_current_nickname(uuid)
                 edit_discord_id(member_exist["discord_id"], ctx.author.id)
                 await give_role_and_nick(ctx.author, nick)
-                await ctx.send(config.success_message, hidden=True)
+                await ctx.send(content=config.success_message if config.success_message is not None else "",
+                               embed=config.success_message_embed,
+                               hidden=True)
             else:
-                await ctx.send(config.ban_message, hidden=True)
+                await ctx.send(content=config.ban_message if config.ban_message is not None else "",
+                               embed=config.ban_message_embed,
+                               hidden=True)
     else:
-        await ctx.send(config.error_message, hidden=True)
+        await ctx.send(content=config.error_message if config.error_message is not None else "",
+                       embed=config.error_message_embed,
+                       hidden=True)
 
 
 if __name__ == '__main__':
